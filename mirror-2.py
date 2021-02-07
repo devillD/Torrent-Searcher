@@ -43,6 +43,7 @@ If any error occurs, feel free to pm me on https://t.me/unkusr""", parse_mode=Pa
 def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
+        #1337x, torrent9 & eztv api
         url = "https://src.abirxo.com/index.php?name={}&t9=true&x1337=true&eztv=true&x1337pages=1".format(update.message.text)
         results = requests.get(url).json()
         print(results)
