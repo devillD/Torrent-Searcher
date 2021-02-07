@@ -39,8 +39,8 @@ If any error occurs, feel free to pm me on https://t.me/unkusr""", parse_mode=Pa
 def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
-        #YTS api
-        url = "https://src.abirxo.com/yts/{}".format(update.message.text)
+        #yts api
+        url = "https://xtorrex.herokuapp.com/api/yts/{}".format(update.message.text)
         results = requests.get(url).json()
         print(results)
         for item in results:
