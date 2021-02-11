@@ -9,4 +9,5 @@ just import this repo as private and edit the [23th](https://github.com/devillD/
 # Mirror ;)
 if any of this stops working, try another one
 
-[Credit](https://github.com/BaraniARR)
+# Credit
+[Main developer](https://github.com/BaraniARR)
