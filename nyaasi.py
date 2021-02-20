@@ -39,7 +39,7 @@ If any error occurs, feel free to pm me on https://t.me/unkusr""", parse_mode=Pa
 def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
-        #YTS api
+        #Nyaasi api
         url = "https://xtorrex.herokuapp.com/api/nyaasi/{}".format(update.message.text)
         results = requests.get(url).json()
         print(results)
