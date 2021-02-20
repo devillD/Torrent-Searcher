@@ -9,5 +9,5 @@ just import this repo as private and edit the [23th](https://github.com/devillD/
 # Mirror ;)
 if any of these stops working, try another one
 
-# Credit
-[Main developer](https://github.com/BaraniARR)
+# Main Repo
+[Torrent-Searcher-Bot](https://github.com/BaraniARR/Torrent-Searcher-Bot/tree/main)
