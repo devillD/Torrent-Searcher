@@ -44,7 +44,7 @@ def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
         #1337x, torrent9 & eztv api
-        url = "https://api.abirxo.com/bot/index.php?name={}&t9=true&x1337=true&eztv=true&x1337pages=1".format(update.message.text)
+        url = "https://api.abirxo.com/index.php?name={}&x1337=true&x1337pages=1".format(update.message.text)
         results = requests.get(url).json()
         print(results)
         for item in results:
