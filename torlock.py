@@ -40,7 +40,7 @@ def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
         #Torlock api
-        url = "https://xtorrex.herokuapp.com/api/torlock/{}".format(update.message.text)
+        url = "https://src.abirxo.com/torlock/{}".format(update.message.text)
         results = requests.get(url).json()
         print(results)
         for item in results:
