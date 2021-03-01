@@ -43,7 +43,7 @@ If any error occurs, feel free to pm me on https://t.me/unkusr""", parse_mode=Pa
 def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
-        #torrentz2 api
+        #torrentz2 api # Api is not working at this time
         url = "https://xmatrix.herokuapp.com/search/{}".format(update.message.text)
         results = requests.get(url).json()
         print(results)
