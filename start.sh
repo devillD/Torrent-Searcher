@@ -1,1 +1,1 @@
-python3 mirror.py
+python3 piratebay.py
