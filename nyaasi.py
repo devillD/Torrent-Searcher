@@ -40,7 +40,7 @@ def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
         #Nyaasi api # Best for anime
-        url = "https://src.abirxo.com/nyaasi/{}".format(update.message.text)
+        url = "https://xmatrix.herokuapp.com/nyaasi/{}".format(update.message.text)
         results = requests.get(url).json()
         print(results)
         for item in results:
