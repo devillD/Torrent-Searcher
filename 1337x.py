@@ -40,7 +40,7 @@ def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
         #1337x api # with image
-        url = "https://src.abirxo.com/1337x/{}".format(update.message.text)
+        url = "https://xmatrix.herokuapp.com/1337x/{}".format(update.message.text)
         results = requests.get(url).json()
         print(results)
         for item in results:
