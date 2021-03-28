@@ -44,7 +44,7 @@ def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
         #Piratebay api
-        url = "https://api.sumanjay.cf/torrent/?query={}".format(update.message.text)
+        url = "https://xmatrix.herokuapp.com/piratebay/{}".format(update.message.text)
         results = requests.get(url).json()
         print(results)
         for item in results:
