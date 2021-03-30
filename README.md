@@ -1,6 +1,6 @@
 # Revived
 All mejor sites revived
-# Updated on 30-March-2021 at 12:35PM GMT
+# Updated on 30th March 2021 at 12:35PM GMT
 # Flooding-Caution!
 This bot cause flooding in group. Better you communicate with it via pm
 
