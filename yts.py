@@ -40,7 +40,7 @@ def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
         #yts api
-        url = "https://xmatrix.herokuapp.com/yts/{}".format(update.message.text)
+        url = "http://api-zero.abirxo.com/yts/{}".format(update.message.text)
         results = requests.get(url).json()
         print(results)
         for item in results:
