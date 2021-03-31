@@ -44,7 +44,7 @@ def find(update: Update, context: CallbackContext) -> None:
     try:
         update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
         #Piratebay api
-        url = "http://api-zero.abirxo.com/piratebay/{}".format(update.message.text)
+        url = "https://api.api-zero.workers.dev/piratebay/{}".format(update.message.text)
         results = requests.get(url).json()
         print(results)
         for item in results:
