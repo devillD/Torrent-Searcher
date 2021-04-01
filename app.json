@@ -1,0 +1,32 @@
+{
+    "name": "Torrent SearcherBot",
+    "description": "Telegram Torrent Searcher",
+    "logo": "https://raw.githubusercontent.com/devillD/Torrent-Searcher/main/torrent-src.png",
+    "keywords": [
+      "telegram",
+      "bot",
+      "torrent",
+      "python"
+    ],
+    "repository": "https://github.com/devillD/Torrent-Searcher.git",
+    "website": "https://t.me/trntsrcbot",
+    "success_url": "https://t.me/trntsrcbot",
+    "stack": "container",
+    "env": {
+      "BOT_TOKEN": {
+        "description": "The telegram bot token that you get from @BotFather.",
+        "value": "",
+        "required": true
+      },
+      "API_ID": {
+        "description": "This is to authenticate to your telegram account for downloading Telegram files. You can get this from https://my.telegram.org DO NOT put this in quotes.",
+        "value": "",
+        "required": true
+      },
+      "API_HASH": {
+        "description": "This is to authenticate to your telegram account for downloading Telegram files. You can get this from https://my.telegram.org.",
+        "value": "",
+        "required": true
+      }
+    }
+}
