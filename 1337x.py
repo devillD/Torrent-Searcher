@@ -1,95 +1,175 @@
-#Licenced under MIT License
-#charset = "utf-8"
-#Language = "Python3"
-#Bot Framework = "python-telegram-bot"
-#The Code is without Proxy, Actual code contains Proxy
-#Proxy should be used is of the type SOCKS5
-#Special thanks to cyberboySumanjay
-#The bot will work till you press ctrl+c in the terminal or command line.,
-
-#import the required files
-import requests
-import logging
-from telegram import *
-from telegram.ext import *
-
-#enable logger (optional)
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
-)
-
-logger = logging.getLogger(__name__)
-
-TOKEN = "Your Bot Token"
-
-#CommandHandler for message "Start"
-def start(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text(f"""*Hi {update.effective_chat.first_name},* 
-Welcome to the Torrent Searcher Bot. Here you will find all the torrents you search for :)
-Type /help to know how to use the bot
-Type /info to know about the developer""", parse_mode=ParseMode.MARKDOWN)
-
-#CommandHandler for message "Help"
-def help(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text("""Send me the query you want to search and i will do the rest!
-If any error occurs, feel free to pm me on https://t.me/unkusr""", parse_mode=ParseMode.MARKDOWN)
+import os
+import aiohttp
+import json
+from pyrogram import Client, filters, emoji
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-#CommandHandler to get torrents for the query
-def find(update: Update, context: CallbackContext) -> None:
+app = Client("trntsrcbot", api_id=int(os.environ.get("API_ID")), api_hash=os.environ.get("API_HASH"), bot_token=os.environ.get("BOT_TOKEN"))
+
+
+print("\nBot Started\n")
+
+
+@app.on_message(filters.command(['start']))
+async def start(_, message):
+    await message.reply_text("Hello I'm PirateBay Torrent Scraper Bot\nSend /help To Show Help Screen\nBot by @unkusr")
+
+
+
+@app.on_message(filters.command(['help']))
+async def help(_, message):
+    await message.reply_text("Example: /find titanic")
+
+m = None
+i = 0
+a = None
+query = None
+
+
+@app.on_message(filters.command(["find"]))
+async def find(_, message):
+    global m
+    global i
+    global a
+    global query
     try:
-        update.message.reply_text("Searching results for 👉{}👈".format(update.message.text))
-        #1337x api # with image
-        url = "https://api.api-zero.workers.dev/1337x/{}".format(update.message.text)
-        results = requests.get(url).json()
-        print(results)
-        for item in results:
-            name = item.get('Name')
-            mag = item.get('Magnet')
-            pos = item.get('Poster')
-            cat = item.get('Category')
-            typ = item.get('Type')
-            lang = item.get('Language')
-            size = item.get('Size')
-            by = item.get('UploadedBy')
-            down = item.get('Downloads')
-            check = item.get('LastChecked')
-            up = item.get('DateUploaded')
-            seed = item.get('Seeders')
-            leech = item.get('Leechers')
-            update.message.reply_text(f"""*➲Name:* `{name}`
-Uploaded {up}
-Checked {check}
-Uploaded by `{by}`
-*Downloads:* {down}
-*Type:* `{typ}`
-*Category:* `{cat}`
-*Language:* `{lang}`
-*Size:* {size}
-*Seeds:* {seed}
-*Leeches:* {leech}
-*Poster:* {pos}
-*Magnet Link:* `{mag}`""", parse_mode=ParseMode.MARKDOWN)
-        update.message.reply_text("End of Results")
+        await message.delete()
     except:
-        update.message.reply_text("""Search Completed""")
+        pass
+    if len(message.command) < 2:
+        await message.reply_text("Usage: /find query")
+        return
+    query = message.text.split(None, 1)[1].replace(" ", "%20")
+    m = await message.reply_text("Searching")
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f"https://api.api-zero.workers.dev/1337x/{query}") \
+                    as resp:
+                a = json.loads(await resp.text())
+    except:
+        await m.edit("Found Nothing.")
+        return
+    result = (
+        f"**Page - {i+1}**\n\n"
+        f"➲Name: `{a[i]['Name']}`\n"
+        f"➲{a[i]['UploadedBy']} on "
+        f"{a[i]['DateUploaded']}\n" 
+        f"➲{a[i]['Type']} "
+        f"{a[i]['Category']}\n"
+        f"➲Poster: {a[i]['Poster']}\n"
+        f"➲Language: {a[i]['Language']} || "
+        f"➲Checked: {a[i]['LastChecked']}\n"
+        f"➲Seeds: {a[i]['Seeders']} & "
+        f"➲Leeches: {a[i]['Leechers']}\n"
+        f"➲Magnet: `{a[i]['Magnet']}`\n\n\n"
+    )
+    await m.edit(
+        result,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(f"Next {emoji.RIGHT_ARROW}",
+                                         callback_data="next"),
+                    InlineKeyboardButton(f"{emoji.CROSS_MARK} DELETE {emoji.CROSS_MARK}",
+                                         callback_data="delete")
+                ]
+            ]
+        ),
+        parse_mode="markdown",
+    )
 
-#CommandHnadler for message "info"
-def info(update: Update, context: CallbackContext) -> None:
-    #Never Mind :-)
-    update.message.reply_text("""Bot by @unkusr""", parse_mode=ParseMode.MARKDOWN)
 
-#Add all handlers to the main function.
-def main() -> None:
-    updater = Updater(TOKEN, use_context=True)
-    dispatcher = updater.dispatcher
-    dispatcher.add_handler(CommandHandler("start", start))
-    dispatcher.add_handler(CommandHandler("help", help))
-    dispatcher.add_handler(CommandHandler("info", info))
-    dispatcher.add_handler(MessageHandler(Filters.text & (~Filters.command), find))
-    updater.start_polling() #set bot to polling, if you use webhooks, replace this statement with the url of webhook.,
-    updater.idle()
+@app.on_callback_query(filters.regex("next"))
+async def callback_query_next(_, message):
+    global i
+    global m
+    global a
+    global query
+    i += 1
+    result = (
+        f"**Page - {i+1}**\n\n"
+        f"➲Name: `{a[i]['Name']}`\n"
+        f"➲{a[i]['UploadedBy']} on "
+        f"{a[i]['DateUploaded']}\n" 
+        f"➲{a[i]['Type']} "
+        f"{a[i]['Category']}\n"
+        f"➲Poster: {a[i]['Poster']}\n"
+        f"➲Language: {a[i]['Language']} || "
+        f"➲Checked: {a[i]['LastChecked']}\n"
+        f"➲Seeds: {a[i]['Seeders']} & "
+        f"➲Leeches: {a[i]['Leechers']}\n"
+        f"➲Magnet: `{a[i]['Magnet']}`\n\n\n"
+    )
+    await m.edit(
+        result,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(f"{emoji.LEFT_ARROW} Prev",
+                                         callback_data="previous"),
+                    InlineKeyboardButton(f"{emoji.CROSS_MARK} DELETE {emoji.CROSS_MARK}",
+                                         callback_data="delete"),
+                    InlineKeyboardButton(f"Next {emoji.RIGHT_ARROW}",
+                                         callback_data="next")
+                    
+                ]
+            ]
+        ),
+        parse_mode="markdown",
+    )
 
-#Call the main function
-if __name__ == '__main__':
-    main()
+
+@app.on_callback_query(filters.regex("previous"))
+async def callback_query_previous(_, message):
+    global i
+    global m
+    global a
+    global query
+    i -= 1
+    result = (
+        f"**Page - {i+1}**\n\n"
+        f"➲Name: `{a[i]['Name']}`\n"
+        f"➲{a[i]['UploadedBy']} on "
+        f"{a[i]['DateUploaded']}\n" 
+        f"➲{a[i]['Type']} "
+        f"{a[i]['Category']}\n"
+        f"➲Poster: {a[i]['Poster']}\n"
+        f"➲Language: {a[i]['Language']} || "
+        f"➲Checked: {a[i]['LastChecked']}\n"
+        f"➲Seeds: {a[i]['Seeders']} & "
+        f"➲Leeches: {a[i]['Leechers']}\n"
+        f"➲Magnet: `{a[i]['Magnet']}`\n\n\n"
+    )
+    await m.edit(
+        result,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(f"{emoji.LEFT_ARROW} Prev",
+                                         callback_data="previous"),
+                    InlineKeyboardButton(f"{emoji.CROSS_MARK} DELETE {emoji.CROSS_MARK}",
+                                         callback_data="delete"),
+                    InlineKeyboardButton(f"Next {emoji.RIGHT_ARROW}",
+                                         callback_data="next")
+                ]
+            ]
+        ),
+        parse_mode="markdown",
+    )
+
+
+@app.on_callback_query(filters.regex("delete"))
+async def callback_query_delete(_, message):
+    global m
+    global i
+    global a
+    global query
+    await m.delete()
+    m = None
+    i = 0
+    a = None
+    query = None
+
+
+app.run()
