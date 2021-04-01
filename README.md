@@ -14,4 +14,4 @@ such as: [mirror.py](https://github.com/devillD/Torrent-Searcher/blob/26c0fa5296
 if any of these stops working, try another one
 
 # Main Repo
-[Torrent-Searcher-Bot](https://github.com/BaraniARR/Torrent-Searcher-Bot/tree/main)
+[Torrent_Scraper_Bot](https://github.com/thehamkercat/Torrent_Scraper_Bot/tree/master)
