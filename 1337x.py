@@ -69,9 +69,9 @@ async def find(_, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(f"Next {emoji.RIGHT_ARROW}",
+                    InlineKeyboardButton(f"Next",
                                          callback_data="next"),
-                    InlineKeyboardButton(f"{emoji.CROSS_MARK} DELETE {emoji.CROSS_MARK}",
+                    InlineKeyboardButton(f"{emoji.CROSS_MARK}",
                                          callback_data="delete")
                 ]
             ]
@@ -106,11 +106,11 @@ async def callback_query_next(_, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(f"{emoji.LEFT_ARROW} Prev",
+                    InlineKeyboardButton(f"Prev",
                                          callback_data="previous"),
-                    InlineKeyboardButton(f"{emoji.CROSS_MARK} DELETE {emoji.CROSS_MARK}",
+                    InlineKeyboardButton(f"{emoji.CROSS_MARK}",
                                          callback_data="delete"),
-                    InlineKeyboardButton(f"Next {emoji.RIGHT_ARROW}",
+                    InlineKeyboardButton(f"Next",
                                          callback_data="next")
                     
                 ]
@@ -146,11 +146,11 @@ async def callback_query_previous(_, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(f"{emoji.LEFT_ARROW} Prev",
+                    InlineKeyboardButton(f"Prev",
                                          callback_data="previous"),
-                    InlineKeyboardButton(f"{emoji.CROSS_MARK} DELETE {emoji.CROSS_MARK}",
+                    InlineKeyboardButton(f"{emoji.CROSS_MARK}",
                                          callback_data="delete"),
-                    InlineKeyboardButton(f"Next {emoji.RIGHT_ARROW}",
+                    InlineKeyboardButton(f"Next",
                                          callback_data="next")
                 ]
             ]
