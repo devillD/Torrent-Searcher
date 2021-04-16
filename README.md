@@ -6,6 +6,9 @@ Added find command. Now you can add your bot in a group
 # Deployment
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/devillD/Torrent-Searcher/tree/main)
 
+# Demo Bot
+[Torrent Searcher](https://t.me/trntsrcbot)
+
 # Mirror ;)
 if any of these stops working, try another one
 
