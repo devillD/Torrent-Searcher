@@ -9,8 +9,8 @@ Added find command. Now you can add your bot in a group
 # Demo Bot
 [Torrent Searcher](https://t.me/trntsrcbot)
 
-# Mirror ;)
-if any of these stops working, try another one
+# Proxy ;)
+Base api [proxy site]{https://zero.api-zero.workers.dev/}
 
 # Main Repo
 [Torrent_Scraper_Bot](https://github.com/thehamkercat/Torrent_Scraper_Bot/tree/master)
