@@ -4,7 +4,7 @@ All mejor sites revived
 # F̶l̶o̶o̶d̶i̶n̶g̶-̶C̶a̶u̶t̶i̶o̶n̶!̶ Command added ;)
 Added find command. Now you can add your bot in a group
 # Deployment
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/abirxox/Torrent-Searcher/tree/main)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/devillD/Torrent-Searcher/tree/main)
 
 # Demo Bot
 [Torrent Searcher](https://t.me/trntsrcbot)
