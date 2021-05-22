@@ -1,5 +1,9 @@
 FROM python:3-slim-buster AS base
 
+WORKDIR /Bot
+
+RUN chmod -R 777 /Bot
+
 # Export ARGs as ENV vars so they can be shared among steps
 ENV DEBIAN_FRONTEND=noninteractive \
     APT_OPTS="-q=2 --yes"
