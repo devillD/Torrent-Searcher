@@ -12,5 +12,5 @@ Added find command. Now you can add your bot in a group
 # Proxy ;)
 Base api [proxy site](https://zero.api-zero.workers.dev/)
 
-# Main Repo
-[Torrent_Scraper_Bot](https://github.com/thehamkercat/Torrent_Scraper_Bot/tree/master)
+# Credit
+[Devloper](https://github.com/TheHamkerCat)
