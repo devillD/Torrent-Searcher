@@ -1,4 +1,4 @@
-FROM devilldon/py3-alpine:stable
+FROM devilldon/py3-alpine
 
 WORKDIR /BOT
 
