@@ -1,6 +1,6 @@
 # Revived
-All mejor sites revived
-# Updated on 6th Jun 2021 at 8:30PM GMT+6
+1337x
+# Updated on 23th Jun 2021 at 2:32PM GMT+6
 # F̶l̶o̶o̶d̶i̶n̶g̶-̶C̶a̶u̶t̶i̶o̶n̶!̶ Command added ;)
 Added find command. Now you can add your bot in a group
 # Deployment
