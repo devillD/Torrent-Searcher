@@ -41,10 +41,10 @@ async def find(_, message):
         await message.reply_text("Usage: /find query")
         return
     query = message.text.split(None, 1)[1].replace(" ", "%20")
-    m = await message.reply_text("Searching")
+    m = await message.reply_text("Searching\nThis might take longer time")
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"https://campestral-rugs.000webhostapp.com/?name={query}") \
+            async with session.get(f"https://itor.api-zero.workers.dev/?name={query}") \
                     as resp:
                 a = json.loads(await resp.text())
     except:
