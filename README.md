@@ -1,5 +1,7 @@
-# Revived
-1337x
+# Api info
+Default: https://api-tor.herokuapp.com
+Old: http://api.api-zero.workers.dev
+Docker: ghcr.io/devilld/torrent-api:i & bash serve.sh
 # Updated on 23th Jun 2021 at 1:50PM GMT+6
 # F̶l̶o̶o̶d̶i̶n̶g̶-̶C̶a̶u̶t̶i̶o̶n̶!̶ Command added ;)
 Added find command. Now you can add your bot in a group
