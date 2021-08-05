@@ -1,5 +1,5 @@
 
-FROM devilldon/py3-alpine:stable
+FROM ghcr.io/devilld/py3-dev:main
 
 WORKDIR /BOT
 
