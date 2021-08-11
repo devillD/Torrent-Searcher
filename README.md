@@ -1,5 +1,5 @@
 # Api info
-Default: https://api-tor.herokuapp.com
+Default: https://api-tor-devilld.cloud.okteto.net
 Old: https://api.api-zero.workers.dev
 Docker: ghcr.io/devilld/torrent-api:i & bash serve.sh
 # Updated on 23th Jun 2021 at 1:50PM GMT+6
