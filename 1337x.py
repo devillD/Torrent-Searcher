@@ -44,7 +44,7 @@ async def find(_, message):
     m = await message.reply_text("Searching")
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"https://api-tor.herokuapp.com/1337x/{query}") \
+            async with session.get(f"https://api.api-zero.workers.dev/1337x/{query}") \
                     as resp:
                 a = json.loads(await resp.text())
     except:
