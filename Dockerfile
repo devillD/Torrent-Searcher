@@ -1,4 +1,3 @@
-
 FROM ghcr.io/devilld/py3-dev:main
 
 WORKDIR /BOT
