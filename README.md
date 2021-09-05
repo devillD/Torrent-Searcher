@@ -1,6 +1,5 @@
-# Api info
-Default: https://api-abirxox.cloud.okteto.net
-Old: https://api.api-zero.workers.dev
+# API info
+API: https://api.api-zero.workers.dev
 # Updated on 12th August 2021 at 11:58PM GMT+6
 # F̶l̶o̶o̶d̶i̶n̶g̶-̶C̶a̶u̶t̶i̶o̶n̶!̶ Command added ;)
 Added find command. Now you can add your bot in a group
