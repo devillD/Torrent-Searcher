@@ -12,7 +12,7 @@ Edit [Line1](https://github.com/devillD/Torrent-Searcher/blob/cd1d3c6bcb53bf5a7e
 [Torrent Searcher](https://t.me/trntsrcbot)
 
 # Proxy ;)
-Base api [proxy site](https://zero.api-zero.workers.dev/)
+Base api [proxy site](https://api.api-zero.workers.dev/)
 
 # Credit
 [Devloper](https://github.com/TheHamkerCat)
